@@ -12,14 +12,15 @@ export function ContextProvider(props) {
     })
 
     const [reload, setReload] = useState(false)
-
+   
     useEffect(() => {
-        axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=ind&f_has_lyrics=1&apikey=${process.env.REACT_APP_APIKEY}`)
+        axios.get(`https://cors-anywhere.herokuapp.com/https://api.musixmatch.com/ws/1.1/chart.tracks.get?chart_name=top&page=1&page_size=10&country=ind&f_has_lyrics=1&apikey=46a908cae9e6fe663a1fe8ef339f08f6`)
         .then(res=>{
             dispatch({
                 type:'GET_TOP',
                 track_list:res.data.message.body.track_list
             })
+        
         })
         .catch(err=>{
             console.log(err);
